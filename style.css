@@ -1,0 +1,31 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #050208; }
+body { font-family: Montserrat, system-ui, sans-serif; touch-action: none; }
+#universe { position: fixed; inset: 0; width: 100%; height: 100%; cursor: grab; }
+#universe:active { cursor: grabbing; }
+h1 {
+  position: fixed; z-index: 2; top: clamp(1.25rem, 5vh, 2.8rem); left: 1rem; right: 1rem;
+  margin: 0; color: #fff9c7; text-align: center; font-family: "Indie Flower", cursive;
+  font-size: clamp(2rem, 4.1vw, 3.7rem); font-weight: 400; line-height: 1;
+  text-shadow: 0 0 10px #ffd700, 0 0 26px #d88800; pointer-events: none;
+}
+h1 span { display: inline-block; animation: sway 2.6s ease-in-out infinite; }
+.hint {
+  position: fixed; z-index: 2; bottom: 1.25rem; left: 0; right: 0; margin: 0;
+  text-align: center; color: rgba(255,248,205,.58); font-size: .72rem; letter-spacing: .04em;
+  pointer-events: none; transition: opacity .7s;
+}
+#intro {
+  position: fixed; inset: 0; z-index: 10; display: grid; place-content: center; gap: 1.25rem;
+  background: radial-gradient(circle at center, #201207 0, #08040a 42%, #000 100%);
+  cursor: pointer; text-align: center; transition: opacity .8s ease, visibility .8s ease;
+}
+#intro.leave { opacity: 0; visibility: hidden; }
+.sunflower { font-size: clamp(6rem, 19vmin, 10rem); filter: drop-shadow(0 0 15px #ffd700) drop-shadow(0 0 45px #a54b00); animation: pulse 1.45s ease-in-out infinite; }
+#intro p { margin: 0; color: #fff7bd; font: clamp(1.75rem, 4vw, 2.6rem) "Indie Flower", cursive; text-shadow: 0 0 9px #ffc400; animation: blink 2.1s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { transform:scale(1) rotate(-2deg) } 20% { transform:scale(1.14) rotate(2deg) } 40% { transform:scale(1.02) rotate(-1deg) } }
+@keyframes blink { 0%,100% { opacity:.52 } 50% { opacity:1 } }
+@keyframes sway { 0%,100% { transform:rotate(-7deg) } 50% { transform:rotate(7deg) } }
+@media (max-width: 600px) { .hint { display: none; } h1 { top: 1.5rem; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
